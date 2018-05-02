@@ -1,23 +1,24 @@
 // Endpoints
-export const BASE_ENDPOINT = 'http://dnd5eapi.co/api/';
+const BASE_ENDPOINT = 'http://dnd5eapi.co/api/';
+exports.BASE_ENDPOINT = 'http://dnd5eapi.co/api/';
 
 // Pass an Index ONLY
-export const ABILITY_SCORES = BASE_ENDPOINT+'ability-scores/';
-export const SKILLS = BASE_ENDPOINT+'skills/';
-export const LANGUAGES = BASE_ENDPOINT+'languages/';
-export const FEATURES = BASE_ENDPOINT+'features/';
-export const RACES = BASE_ENDPOINT+'races/';
-export const EQUIPMENT = BASE_ENDPOINT+'equipment/';
-export const CONDITIONS = BASE_ENDPOINT+'conditions/';
-export const DAMAGE_TYPES = BASE_ENDPOINT+'damage-types/';
-export const MAGIC_SCHOOLS = BASE_ENDPOINT+'magic-schools/';
+exports.ABILITY_SCORES = BASE_ENDPOINT+'ability-scores/';
+exports.SKILLS = BASE_ENDPOINT+'skills/';
+exports.LANGUAGES = BASE_ENDPOINT+'languages/';
+exports.FEATURES = BASE_ENDPOINT+'features/';
+exports.RACES = BASE_ENDPOINT+'races/';
+exports.EQUIPMENT = BASE_ENDPOINT+'equipment/';
+exports.CONDITIONS = BASE_ENDPOINT+'conditions/';
+exports.DAMAGE_TYPES = BASE_ENDPOINT+'damage-types/';
+exports.MAGIC_SCHOOLS = BASE_ENDPOINT+'magic-schools/';
 
 // Pass an Index or  querystring
-export const SPELLS = BASE_ENDPOINT+'spells/';
-export const PROFICIENCIES = BASE_ENDPOINT+'proficiencies/';
-export const CLASSES = BASE_ENDPOINT+'classes/';
-export const SUBCLASSES = BASE_ENDPOINT+'subclasses/';
-export const SUBRACES = BASE_ENDPOINT+'subraces/';
+exports.SPELLS = BASE_ENDPOINT+'spells/';
+exports.PROFICIENCIES = BASE_ENDPOINT+'proficiencies/';
+exports.CLASSES = BASE_ENDPOINT+'classes/';
+exports.SUBCLASSES = BASE_ENDPOINT+'subclasses/';
+exports.SUBRACES = BASE_ENDPOINT+'subraces/';
 
 //Level endpoint needs to be handled differently since it is bisected by 2 params.
 // export const LEVEL = CLASSES+'{class name}/level/{integer 1-20}';
