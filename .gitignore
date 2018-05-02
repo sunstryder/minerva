@@ -2,4 +2,7 @@
 node_modules
 
 #Workspace
-**/workspace.xml
+.idea
+
+#Environmenet
+.env
