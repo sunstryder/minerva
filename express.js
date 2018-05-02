@@ -5,7 +5,7 @@ const { SPELLS } = require('./constants');
 
 const app = express();
 
-app.get('/spells', async (req, res) => {
+app.get('/', async (req, res) => {
     // GET request for spells
     let output;
     const response = await axios({
@@ -18,4 +18,4 @@ app.get('/spells', async (req, res) => {
 });
 
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+app.listen('https://minerva-dnd.herokuapp.com/', () => console.log('Example app listening on port 3000!'));
