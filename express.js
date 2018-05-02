@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     return res.send('Wassup');
 });
 
-app.get('/spells', async (req, res) => {
+app.post('/spells', async (req, res) => {
     // GET request for spells
     let output;
     const response = await axios({
