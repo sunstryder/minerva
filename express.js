@@ -22,12 +22,14 @@ app.post('/spells', async (req, res) => {
     console.log(req.body);
     let output;
     let spellIndex = spells.getSpellIndex(req.body.text);
+    console.log(spellIndex);
     const response = await axios({
         method:'get',
         url: SPELLS+spellIndex,
         responseType:'json'
     });
     output = response.data;
+    console.log(output);
     return res.send(output);
 });
 
