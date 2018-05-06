@@ -2,6 +2,8 @@ const express = require('express');
 const axios = require('axios');
 
 const { SPELLS } = require('./constants');
+const spells = require('./spells');
+// spells.getSpellIndex to grab the index
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -12,16 +14,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/', (req, res) => {
-    return res.send('Wassup');
+    return res.send('Welcome to Minerva');
 });
 
 app.post('/spells', async (req, res) => {
     // POST request for spells
     console.log(req.body);
     let output;
+    let spellIndex = spells.getSpellIndex(req.body.text);
     const response = await axios({
         method:'get',
-        url: SPELLS,
+        url: SPELLS+spellIndex,
         responseType:'json'
     });
     output = response.data;
@@ -29,4 +32,5 @@ app.post('/spells', async (req, res) => {
 });
 
 
-app.listen(port, () => console.log('Example app listening on port 3000!'));
+
+app.listen(port, () => console.log('app.listen succeeded, Minevera is running'));
