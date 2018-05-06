@@ -1,6 +1,6 @@
 const { RTMClient } = require('@slack/client');
 require('dotenv').config();
-const CONST = require('./constants');
+const CONST = require('../constants');
 
 const token = process.env.SLACK_BOT_TOKEN;
 const rtm = new RTMClient(token);
