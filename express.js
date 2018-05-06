@@ -6,13 +6,17 @@ const { SPELLS } = require('./constants');
 const app = express();
 const port = process.env.PORT || 8080;
 
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/', (req, res) => {
     return res.send('Wassup');
 });
 
 app.post('/spells', async (req, res) => {
-    // GET request for spells
+    // POST request for spells
     console.log(req.body);
     let output;
     const response = await axios({
