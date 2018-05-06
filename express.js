@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 
 app.post('/spells', async (req, res) => {
     // GET request for spells
+    console.log(req.body);
     let output;
     const response = await axios({
         method:'get',

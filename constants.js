@@ -12,8 +12,6 @@ exports.EQUIPMENT = BASE_ENDPOINT+'equipment/';
 exports.CONDITIONS = BASE_ENDPOINT+'conditions/';
 exports.DAMAGE_TYPES = BASE_ENDPOINT+'damage-types/';
 exports.MAGIC_SCHOOLS = BASE_ENDPOINT+'magic-schools/';
-
-// Pass an Index or  querystring
 exports.SPELLS = BASE_ENDPOINT+'spells/';
 exports.PROFICIENCIES = BASE_ENDPOINT+'proficiencies/';
 exports.CLASSES = BASE_ENDPOINT+'classes/';
