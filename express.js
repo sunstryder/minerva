@@ -25,13 +25,11 @@ app.post('/spells', async (req, res) => {
         url: SPELLS+spellIndex,
         responseType:'json'
     });
-    let spellData = response.data;
-    console.log(spellData);
-    let output = spells.spellParser(spellData);
+    let output = spells.spellParser(response.data);
     return res.send(output);
 });
 
 
 
 
-app.listen(port, () => console.log('app.listen succeeded, Minevera is running'));
+app.listen(port, () => console.log('Minevera is running!'));

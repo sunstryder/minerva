@@ -317,13 +317,13 @@ exports.getSpellIndex = (spellName) => {
     return spellIndex ? spellIndex : 'Spell does not exist';
 };
 
+//SpellParser formats the JSON response of a spell resource.
 exports.spellParser = (spell) => {
     return {
         attachments: [
             {
-                "title": `*${spell.name}*`,
-                "pretext": "Pretext _supports_ mrkdwn",
-                "text": `*Description* \n ${spell.desc} \n *Range* \n ${spell.range} \n *Duration* \n ${spell.duration}`,
+                "title": `*{spell.name}`,
+                "text": `*Description* \n\n _${spell.desc}_ \n\n *Range* \n\n ${spell.range} \n\n *Duration* \n\n ${spell.duration}`,
                 "mrkdwn_in": [
                     "text",
                     "title"
