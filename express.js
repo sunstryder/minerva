@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
     return res.send('Welcome to Minerva');
 });
 
+/*
+        SPELLS YEEHAW
+
+ */
 app.post('/spells', async (req, res) => {
     // POST request for spells
     let spellIndex = spells.getSpellIndex(req.body.text);
@@ -34,6 +38,10 @@ app.post('/spells', async (req, res) => {
     }
 });
 
+/*
+        SKILLS YOOO
+
+ */
 app.post('/skills', async (req, res) => {
     // POST request for skills
     let skillIndex = skills.getSkillIndex(req.body.text);
