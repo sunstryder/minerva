@@ -19,19 +19,18 @@ app.get('/', (req, res) => {
 
 app.post('/spells', async (req, res) => {
     // POST request for spells
-    console.log(req.body);
-    let output;
     let spellIndex = spells.getSpellIndex(req.body.text);
-    console.log(spellIndex);
     const response = await axios({
         method:'get',
         url: SPELLS+spellIndex,
         responseType:'json'
     });
-    output = response.data;
-    console.log(output);
-    return res.send(output);
+    let spellData = response.data;
+    console.log(spellData);
+    // let output = spellParser(spellData);
+    return res.send(spellData);
 });
+
 
 
 

@@ -1,8 +1,7 @@
-// Endpoints
+// Endpoint
 const BASE_ENDPOINT = 'http://dnd5eapi.co/api/';
-exports.BASE_ENDPOINT = 'http://dnd5eapi.co/api/';
 
-// Pass an Index ONLY
+// Resource List Endpoints
 exports.ABILITY_SCORES = BASE_ENDPOINT+'ability-scores/';
 exports.SKILLS = BASE_ENDPOINT+'skills/';
 exports.LANGUAGES = BASE_ENDPOINT+'languages/';

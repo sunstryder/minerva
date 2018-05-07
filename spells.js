@@ -316,3 +316,19 @@ exports.getSpellIndex = (spellName) => {
     const spellIndex = _.get(spellMapping, lowerSpellName);
     return spellIndex ? spellIndex : 'Spell does not exist';
 };
+
+exports.spellParser = (spell) => {
+    return {
+        attachments: [
+            {
+                "title": "Acid Arrow",
+                "pretext": "Pretext _supports_ mrkdwn",
+                "text": "Testing *right now!*",
+                "mrkdwn_in": [
+                    "text",
+                    "title"
+                ]
+            }
+        ],
+    }
+};
