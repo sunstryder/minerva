@@ -27,7 +27,7 @@ app.post('/spells', async (req, res) => {
     });
     let spellData = response.data;
     console.log(spellData);
-    let output = spellParser(spellData);
+    let output = spells.spellParser(spellData);
     return res.send(output);
 });
 
