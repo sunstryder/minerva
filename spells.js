@@ -322,7 +322,7 @@ exports.spellParser = (spell) => {
     return {
         attachments: [
             {
-                "title": `*{spell.name}`,
+                "title": `${spell.name}`,
                 "text": `*Description* \n\n _${spell.desc}_ \n\n *Range* \n\n ${spell.range} \n\n *Duration* \n\n ${spell.duration}`,
                 "mrkdwn_in": [
                     "text",
