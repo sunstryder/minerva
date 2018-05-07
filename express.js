@@ -26,6 +26,7 @@ app.post('/spells', async (req, res) => {
         const response = await axios({
             method: 'get',
             url: SPELLS + spellIndex,
+            responseEncoding: 'utf8',
             responseType: 'json'
         });
         let output = spells.spellParser(response.data);
