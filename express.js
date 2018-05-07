@@ -20,13 +20,17 @@ app.get('/', (req, res) => {
 app.post('/spells', async (req, res) => {
     // POST request for spells
     let spellIndex = spells.getSpellIndex(req.body.text);
-    const response = await axios({
-        method:'get',
-        url: SPELLS+spellIndex,
-        responseType:'json'
-    });
-    let output = spells.spellParser(response.data);
-    return res.send(output);
+    if (spellIndex === -1) {
+        return res.send("Spell Does not exist. Perhaps you've misspelt it or it's an Ability")
+    }else {
+        const response = await axios({
+            method: 'get',
+            url: SPELLS + spellIndex,
+            responseType: 'json'
+        });
+        let output = spells.spellParser(response.data);
+        return res.send(output);
+    }
 });
 
 

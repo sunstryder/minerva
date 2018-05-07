@@ -314,21 +314,18 @@ const spellMapping = {
 exports.getSpellIndex = (spellName) => {
     const lowerSpellName = spellName.toLowerCase();
     const spellIndex = _.get(spellMapping, lowerSpellName);
-    return spellIndex ? spellIndex : 'Spell does not exist';
+    return spellIndex ? spellIndex : -1;
 };
 
 //SpellParser formats the JSON response of a spell resource.
+
+// TODO add error handling for mistyped spell names
 exports.spellParser = (spell) => {
     return {
         attachments: [
             {
                 "title": `${spell.name}`,
-                "text": `*Description* \n\n _${spell.desc}_`,
-                "mrkdwn_in": [
-                    "text",
-                    "title"
-                ],
-                "color": "#4286f4",
+                "text": `\n\n _${spell.desc}_\n`,
                 "fields": [
                     {
                         "title": "\n\n*Range*",
@@ -340,7 +337,12 @@ exports.spellParser = (spell) => {
                         "value": `${spell.duration}`,
                         "short": true
                     }
-                ]
+                ],
+                "mrkdwn_in": [
+                    "text",
+                    "title"
+                ],
+                "color": "#88499c"
             }
         ],
     }
