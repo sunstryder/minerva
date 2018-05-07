@@ -321,9 +321,9 @@ exports.spellParser = (spell) => {
     return {
         attachments: [
             {
-                "title": "Acid Arrow",
+                "title": `${spell.name}`,
                 "pretext": "Pretext _supports_ mrkdwn",
-                "text": "Testing *right now!*",
+                "text": `*Description* \n ${spell.desc} \n *Range* \n ${spell.range}`,
                 "mrkdwn_in": [
                     "text",
                     "title"
