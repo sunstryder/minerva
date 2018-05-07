@@ -323,10 +323,23 @@ exports.spellParser = (spell) => {
         attachments: [
             {
                 "title": `${spell.name}`,
-                "text": `*Description* \n\n _${spell.desc}_ \n\n *Range* \n\n ${spell.range} \n\n *Duration* \n\n ${spell.duration}`,
+                "text": `*Description* \n\n _${spell.desc}_`,
                 "mrkdwn_in": [
                     "text",
                     "title"
+                ],
+                "color": "#4286f4",
+                "fields": [
+                    {
+                        "title": "\n\n*Range*",
+                        "value": `${spell.range}`,
+                        "short": true
+                    },
+                    {
+                        "title": "\n\n*Duration*",
+                        "value": `${spell.duration}`,
+                        "short": true
+                    }
                 ]
             }
         ],
