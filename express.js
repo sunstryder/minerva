@@ -21,7 +21,7 @@ app.post('/spells', async (req, res) => {
     // POST request for spells
     let spellIndex = spells.getSpellIndex(req.body.text);
     if (spellIndex === -1) {
-        return res.send("Spell Does not exist. Perhaps you've misspelt it or it's an Ability")
+        return res.send("Spell Does not exist. Perhaps you've misspelt it, it's an Ability, or I haven't learnt it yet :( ")
     }else {
         const response = await axios({
             method: 'get',

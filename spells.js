@@ -328,13 +328,23 @@ exports.spellParser = (spell) => {
                 "text": `\n\n _${spell.desc}_\n`,
                 "fields": [
                     {
-                        "title": "\n\n*Range*",
+                        "title": "\n\nRange",
                         "value": `${spell.range}`,
                         "short": true
                     },
                     {
-                        "title": "\n\n*Duration*",
+                        "title": "\n\nDuration",
                         "value": `${spell.duration}`,
+                        "short": true
+                    },
+                    {
+                        "title": "\n\nSchool",
+                        "value": `${spell.school.name}`,
+                        "short": true
+                    },
+                    {
+                        "title": "\n\nLevel",
+                        "value": `${spell.level}`,
                         "short": true
                     }
                 ],
