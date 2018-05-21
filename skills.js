@@ -35,6 +35,7 @@ exports.getSkillIndex = (skillName) => {
 // TODO add error handling for mistyped skill names
 exports.skillParser = (skill) => {
     return {
+        "response_type": "in_channel",
         attachments: [
             {
                 "title": `${skill.name}`,

@@ -322,6 +322,7 @@ exports.getSpellIndex = (spellName) => {
 // TODO add error handling for mistyped spell names
 exports.spellParser = (spell) => {
     return {
+        "response_type": "in_channel",
         attachments: [
             {
                 "title": `${spell.name}`,
