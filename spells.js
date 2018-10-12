@@ -321,14 +321,14 @@ exports.getSpellIndex = (spellName) => {
 
 // TODO add error handling for mistyped spell names
 exports.spellParser = (spell) => {
-    const description = spell.desc.join('\n')
+    const description = spell.desc.join('\n\n')
     const parsedSpellDescription = description.replace(/â€™/gi, "'");
     return {
         "response_type": "in_channel",
         attachments: [
             {
                 "title": `${spell.name}`,
-                "text": `\n\n _${parsedSpellDescription}_\n`,
+                "text": `\n\n ${parsedSpellDescription}\n`,
                 "fields": [
                     {
                         "title": "\n\nRange",
