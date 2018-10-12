@@ -1,14 +1,14 @@
 const express = require('express');
 const axios = require('axios');
+const bodyParser = require('body-parser');
 
-const { SPELLS, SKILLS } = require('./constants');
-const spells = require('./spells');
-const skills = require('./skills');
+const { SPELLS, SKILLS, spellMapping, skillMapping } = require('./constants');
+const { spellParser } = require('./spells');
+const { skillParser } = require('./skills');
+const { getQueryIndex } = require('./utils')
 
 const app = express();
 const port = process.env.PORT || 8080;
-
-const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -26,12 +26,13 @@ setInterval(function() {
         SPELLS YEEHAW
 
  */
+
 app.post('/spells', async (req, res) => {
     // POST request for spells
     console.log("POST - /spells");
     console.log(`req: ${req.body.text}`);
-    let spellIndex = spells.getSpellIndex(req.body.text);
-    if (!spellIndex === -1) {
+    let spellIndex = getQueryIndex(req.body.text, spellMapping);
+    if (spellIndex !== -1) {
         try {
             const response = await axios({
                 method: 'get',
@@ -39,7 +40,7 @@ app.post('/spells', async (req, res) => {
                 responseEncoding: 'utf8',
                 responseType: 'json'
             });
-            let output = spells.spellParser(response.data);
+            let output = spellParser(response.data);
             return res.send(output);
         } catch (err) {
             console.log(`Error: failed to get spell response ${err}`);
@@ -55,7 +56,7 @@ app.post('/spells', async (req, res) => {
  */
 app.post('/skills', async (req, res) => {
     // POST request for skills
-    let skillIndex = skills.getSkillIndex(req.body.text);
+    let skillIndex = getQueryIndex(req.body.text, skillMapping);
     if (skillIndex === -1) {
         return res.send("Ohoho, I've never heard of this skill. Have you misspelt it? ")
     }else {
@@ -65,7 +66,7 @@ app.post('/skills', async (req, res) => {
             responseEncoding: 'utf8',
             responseType: 'json'
         });
-        let output = skills.skillParser(response.data);
+        let output = skillParser(response.data);
         return res.send(output);
     }
 });
