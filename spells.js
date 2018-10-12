@@ -321,12 +321,14 @@ exports.getSpellIndex = (spellName) => {
 
 // TODO add error handling for mistyped spell names
 exports.spellParser = (spell) => {
+    const apostrophe = 'â€™'
+    const spellDesc = spell.desc.replace(apostrophe, '&#39');
     return {
         "response_type": "in_channel",
         attachments: [
             {
                 "title": `${spell.name}`,
-                "text": `\n\n _${spell.desc}_\n`,
+                "text": `\n\n _${spellDesc}_\n`,
                 "fields": [
                     {
                         "title": "\n\nRange",

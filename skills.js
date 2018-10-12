@@ -34,12 +34,14 @@ exports.getSkillIndex = (skillName) => {
 
 // TODO add error handling for mistyped skill names
 exports.skillParser = (skill) => {
+    const apostrophe = 'â€™'
+    const skillDesc = skill.desc.replace(apostrophe, '&#39');
     return {
         "response_type": "in_channel",
         attachments: [
             {
                 "title": `${skill.name}`,
-                "text": `\n\n _${skill.desc}_\n`,
+                "text": `\n\n _${skillDesc}_\n`,
                 "fields": [
                     {
                         "title": "\n\nAbility Score",
