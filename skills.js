@@ -30,7 +30,7 @@ exports.getSkillIndex = (skillName) => {
     return skillIndex ? skillIndex : -1;
 };
 
-//SpellParser formats the JSON response of a skill resource.
+//skillParser formats the JSON response of a skill resource.
 
 // TODO add error handling for mistyped skill names
 exports.skillParser = (skill) => {
