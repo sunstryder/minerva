@@ -6,17 +6,15 @@ const spellMapping = require('./constants')
 // Output: spell index from this array.
 exports.getSpellIndex = (spellName) => {
     const lowerSpellName = spellName.toLowerCase();
-    const spellIndex = _.get(spellMapping, lowerSpellName);
-    return spellIndex ? spellIndex : -1;
+    const spellIndex = _.get(spellMapping, lowerSpellName, -1);
+    if (spellIndex === -1) console.log(`Error: Can't find spell ${lowerSpellName} from mapping`);
+    return spellIndex;
 };
 
 //SpellParser formats the JSON response of a spell resource.
 
 // TODO add error handling for mistyped spell names
 exports.spellParser = (spell) => {
-    // const description = spell.desc.join('_\n\n_')
-    // const parsedSpellDescription = description.replace(/â€™/gi, "'");
-    // console.log(fixEncoding(spell.desc))
     return {
         "response_type": "in_channel",
         attachments: [

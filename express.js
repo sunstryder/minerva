@@ -28,19 +28,24 @@ setInterval(function() {
  */
 app.post('/spells', async (req, res) => {
     // POST request for spells
+    console.log("POST - /spells");
+    console.log(`req: ${req.body.text}`);
     let spellIndex = spells.getSpellIndex(req.body.text);
-    if (spellIndex === -1) {
-        return res.send("Sorry child, I only know spells in the 5e SRD. ")
+    if (!spellIndex === -1) {
+        try {
+            const response = await axios({
+                method: 'get',
+                url: SPELLS + spellIndex,
+                responseEncoding: 'utf8',
+                responseType: 'json'
+            });
+            let output = spells.spellParser(response.data);
+            return res.send(output);
+        } catch (err) {
+            console.log(`Error: failed to get spell response ${err}`);
+        }
     }else {
-        const response = await axios({
-            method: 'get',
-            url: SPELLS + spellIndex,
-            responseEncoding: 'utf8',
-            responseType: 'json'
-        });
-        let output = spells.spellParser(response.data);
-        // console.log(output);
-        return res.send(output);
+        return res.send("Sorry child, I only know spells in the 5e SRD. ")
     }
 });
 
