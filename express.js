@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 // Keep the app awake on heroku by pinging it every 10 mins
 setInterval(function() {
-    axios.get("http://minerva5e.herokuapp.com");
+    axios.get("http://minerva5e.herokuapp.com/spells");
 }, 600000);
 
 /*
@@ -39,6 +39,7 @@ app.post('/spells', async (req, res) => {
             responseType: 'json'
         });
         let output = spells.spellParser(response.data);
+        // console.log(output);
         return res.send(output);
     }
 });

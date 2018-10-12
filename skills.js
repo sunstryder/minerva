@@ -1,26 +1,6 @@
 const _ = require('lodash');
-
-const skillMapping = {
-    "acrobatics":1,
-    "animal handling":2,
-    "arcana":3,
-    "athletics":4,
-    "deception":5,
-    "history":6,
-    "insight":7,
-    "intimidation":8,
-    "investigation":9,
-    "medicine":10,
-    "nature":11,
-    "perception":12,
-    "performance":13,
-    "persuasion":14,
-    "religion":15,
-    "sleight of hand":16,
-    "stealth":17,
-    "survival":18,
-};
-
+const { fixEncoding } = require('./utils')
+const skillMapping = require('./constants')
 
 // Input: skill name from this array
 // Output: skill index from this array.
@@ -34,14 +14,12 @@ exports.getSkillIndex = (skillName) => {
 
 // TODO add error handling for mistyped skill names
 exports.skillParser = (skill) => {
-    const description = skill.desc.join('\n\n')
-    const parsedSkillDescription = description.replace(/â€™/gi, "'");
     return {
         "response_type": "in_channel",
         attachments: [
             {
                 "title": `${skill.name}`,
-                "text": `\n\n ${parsedSkillDescription}\n`,
+                "text": `\n\n_${fixEncoding(skill.desc)}_\n`,
                 "fields": [
                     {
                         "title": "\n\nAbility Score",
