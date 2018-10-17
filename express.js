@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const { SPELLS, SKILLS, spellMapping, skillMapping } = require('./constants');
 const { spellParser } = require('./spells');
 const { skillParser } = require('./skills');
-const { getQueryIndex } = require('./utils')
+const { getQueryIndex, errorFormatter } = require('./utils')
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
     return res.send('Welcome to Minerva');
 });
 
-// Keep the app awake on heroku by pinging it every 10 mins
+// // Keep the app awake on heroku by pinging it every 10 mins
 setInterval(function() {
-    axios.get("http://minerva5e.herokuapp.com/spells");
+    axios.get("https://minerva-dnd.herokuapp.com/");
 }, 600000);
 
 /*
