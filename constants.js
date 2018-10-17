@@ -20,6 +20,11 @@ exports.SUBRACES = BASE_ENDPOINT+'subraces/';
 //Level endpoint needs to be handled differently since it is bisected by 2 params.
 // export const LEVEL = CLASSES+'{class name}/level/{integer 1-20}';
 
+//Error messages:
+
+exports.spellNotFound = "I'm sorry child, I only know spells in the 5e SRD "
+exports.skillNotFound = "Ohoho, I've never heard of this skill. Have you misspelt it?"
+
 //Skill Mapping
 
 exports.skillMapping = {

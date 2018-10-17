@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 
-const { SPELLS, SKILLS, spellMapping, skillMapping } = require('./constants');
+const { SPELLS, SKILLS, spellMapping, skillMapping, spellNotFound, skillNotFound } = require('./constants');
 const { spellParser } = require('./spells');
 const { skillParser } = require('./skills');
 const { getQueryIndex, errorFormatter } = require('./utils')
@@ -46,7 +46,7 @@ app.post('/spells', async (req, res) => {
             console.log(`Error: failed to get spell response ${err}`);
         }
     }else {
-        return res.send("Sorry child, I only know spells in the 5e SRD. ")
+        return res.send(errorFormatter(spellNotFound))
     }
 });
 
@@ -56,18 +56,24 @@ app.post('/spells', async (req, res) => {
  */
 app.post('/skills', async (req, res) => {
     // POST request for skills
+    console.log("POST - /skills");
+    console.log(`req: ${req.body.text}`);
     let skillIndex = getQueryIndex(req.body.text, skillMapping);
-    if (skillIndex === -1) {
-        return res.send("Ohoho, I've never heard of this skill. Have you misspelt it? ")
-    }else {
-        const response = await axios({
-            method: 'get',
-            url: SKILLS + skillIndex,
-            responseEncoding: 'utf8',
-            responseType: 'json'
-        });
-        let output = skillParser(response.data);
-        return res.send(output);
+    if (skillIndex !== -1) {
+        try {
+            const response = await axios({
+                method: 'get',
+                url: SKILLS + skillIndex,
+                responseEncoding: 'utf8',
+                responseType: 'json'
+            });
+            let output = skillParser(response.data);
+            return res.send(output);
+        } catch (err){
+            console.log(`Error: failed to get skill response ${err}`);
+        }
+    } else {
+        return res.send(errorFormatter(skillNotFound))
     }
 });
 
