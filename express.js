@@ -18,11 +18,6 @@ app.get('/', (req, res) => {
     return res.send('Welcome to Minerva');
 });
 
-// // Keep the app awake on heroku by pinging it every 10 mins
-setInterval(function() {
-    axios.get("https://minerva-dnd.herokuapp.com/");
-}, 600000);
-
 /*
         SPELLS YEEHAW
 
