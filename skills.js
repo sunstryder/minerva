@@ -4,7 +4,7 @@ const { fixEncoding } = require('./utils')
 //skillParser formats the JSON response of a skill resource.
 exports.skillParser = (skill) => {
     return {
-        "response_type": "in_channel",
+        "response_type": "ephemeral",
         attachments: [
             {
                 "title": `${skill.name}`,

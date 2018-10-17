@@ -4,7 +4,7 @@ const { fixEncoding } = require('./utils')
 //SpellParser formats the JSON response of a spell resource.
 exports.spellParser = (spell) => {
     return {
-        "response_type": "in_channel",
+        "response_type": "ephemeral",
         attachments: [
             {
                 "title": `${spell.name}`,
