@@ -22,8 +22,14 @@ exports.SUBRACES = BASE_ENDPOINT+'subraces/';
 
 //Error messages:
 
-exports.spellNotFound = "I'm sorry child, I only know spells in the 5e SRD "
-exports.skillNotFound = "Ohoho, I've never heard of this skill. Have you misspelt it?"
+exports.spellNotFound = {
+    msg: "I'm sorry child, I haven't heard of this one. I only know spells in the 5e SRD ",
+    tip: "Make sure you include any apostrophes in your query! It's also possible you are searching for a class feature, such as 'Channel Divinity' from Clerics and Paladins"
+}
+exports.skillNotFound = { 
+    msg: "Ohoho, I've never heard of this skill. Have you misspelt it?" ,
+    tip: "These are the 18 skills in 5e: Acrobatics, Animal Handling, Arcana, Athletics, Deception, History, Insight, Intimidation, Investigation, Medicine, Nature, Perception, Persuasion, Religion, Sleight of Hand, Stealth and Survival."
+}
 
 //Skill Mapping
 

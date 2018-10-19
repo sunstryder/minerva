@@ -42,7 +42,7 @@ app.post('/spells', async (req, res) => {
             console.log(`Error: failed to get spell response ${err}`);
         }
     }else {
-        return res.send(errorFormatter(req.body.text, spellNotFound))
+        return res.send(errorFormatter(req.body.text, spellNotFound.msg, spellNotFound.tip))
     }
 });
 
@@ -69,7 +69,7 @@ app.post('/skills', async (req, res) => {
             console.log(`Error: failed to get skill response ${err}`);
         }
     } else {
-        return res.send(errorFormatter(req.body.text, skillNotFound))
+        return res.send(errorFormatter(req.body.text, skillNotFound.msg, skillNotFound.tip))
     }
 });
 

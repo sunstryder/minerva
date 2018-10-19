@@ -10,13 +10,20 @@ exports.getQueryIndex = (key, map) => {
     return queryIndex;
 };
 
-exports.errorFormatter = (query, error) => {
+exports.errorFormatter = (query, error, tip) => {
     return {
         "response_type": "ephemeral",
         attachments: [
             {
                 "title": `${query}\n\n`,
                 "text": `_${error}_`,
+                "fields": [
+                    {
+                        "title": "\n\nTips",
+                        "value": `${tip}`,
+                        "short": false
+                    }
+                ],
                 "color": "#88499c",
                 "mrkdwn_in": "text"
             }
