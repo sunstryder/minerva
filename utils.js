@@ -10,11 +10,12 @@ exports.getQueryIndex = (key, map) => {
     return queryIndex;
 };
 
-exports.errorFormatter = (error) => {
+exports.errorFormatter = (query, error) => {
     return {
         "response_type": "ephemeral",
         attachments: [
             {
+                "title": `*${query}*`,
                 "text": `_${error}_`,
                 "color": "#88499c",
                 "mrkdwn_in": "text"
