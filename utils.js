@@ -15,7 +15,7 @@ exports.errorFormatter = (query, error) => {
         "response_type": "ephemeral",
         attachments: [
             {
-                "title": `*${query}*`,
+                "title": `*${query}*\n\n`,
                 "text": `_${error}_`,
                 "color": "#88499c",
                 "mrkdwn_in": "text"
