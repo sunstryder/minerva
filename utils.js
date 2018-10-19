@@ -24,7 +24,7 @@ exports.errorFormatter = (query, error, tip) => {
                         "short": false
                     }
                 ],
-                "color": "#88499c",
+                "color": "#C14242",
                 "mrkdwn_in": "text"
             }
         ]
