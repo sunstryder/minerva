@@ -16,11 +16,11 @@ exports.errorFormatter = (query, error, tip) => {
         attachments: [
             {
                 "title": `${query}\n\n`,
-                "text": `_${error}_`,
+                "text": `${error}`,
                 "fields": [
                     {
                         "title": "\n\nTips",
-                        "value": `${tip}`,
+                        "value": `_${tip}_`,
                         "short": false
                     }
                 ],
