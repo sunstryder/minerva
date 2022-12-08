@@ -13,7 +13,7 @@
     "@slack/client": "^4.1.0",
     "axios": "^0.21.1",
     "dotenv": "^5.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "lodash": "^4.17.19",
     "newrelic": "^4.9.0"
   }
